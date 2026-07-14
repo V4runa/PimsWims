@@ -24,6 +24,9 @@ npm run build
 npm start
 ```
 
+> **Current workflow:** we deploy to Vercel on every push to `main` and review on the
+> live URL (the site isn't public yet). Local dev is optional.
+
 ### Admin studio
 
 Visit **`/admin`** (or "Studio login" in the footer). Default passcode: `pimstudio`
@@ -45,6 +48,45 @@ Visit **`/admin`** (or "Studio login" in the footer). Default passcode: `pimstud
 | Make Me Something | `/custom` | Custom-quote request with reference-image uploads |
 | Testimonials | `/testimonials` | |
 | Studio CMS | `/admin/**` | Dashboard, Products, Categories, Gallery, Testimonials, Journal, Inbox, Settings |
+
+---
+
+## Design & theming (Style Studio)
+
+The whole look is driven by **CSS-variable design tokens**, so the palette, mode, and
+layout can be swapped at runtime with no reload. A floating **Style Studio** panel (the
+wand button, bottom-right of the public site) lets us explore variations while we settle
+the final look. Selections persist to `localStorage` and are applied before first paint
+(via a small inline script in `layout.tsx`) so there's no theme flash.
+
+Switchable dimensions:
+
+| Dimension | Options |
+| --- | --- |
+| **Palette** | Evergreen & Oat · Sage & Cream · Rustwood Autumn · Forest & Wine · Moonlit Grove |
+| **Mode** | Light · Dark |
+| **Typography** | Storybook (Fraunces · Nunito) · Classic (Cormorant · Work Sans) · Modern (DM Serif · Inter) |
+| **Corners** | Soft · Sharp · Round |
+| **Hero layout** | Immersive · Split · Centered · Editorial |
+| **Header style** | Classic · Centered · Minimal |
+
+How it fits together:
+
+- **Tokens** — every color is a CSS variable (`--c-*`, space-separated RGB) that Tailwind
+  reads with alpha support (`tailwind.config.ts`). Corner radius is variable-driven too.
+- **Palettes & modes** — defined as `[data-theme]` / `[data-mode]` blocks in
+  `globals.css`. Palettes were drawn from the artist's inspiration images. Two semantic
+  tokens — `canvas` (page background) and `heading` (heading text) — let light/dark flip
+  cleanly while intentionally-dark areas (hero overlays, footer, buttons) stay dark.
+- **State** — `src/context/theme-context.tsx` stores the selection and reflects it onto
+  `<html data-* >`; option lists live in `src/lib/theme.ts`; the panel is
+  `src/components/style-switcher.tsx`.
+- **Layout variants** — `src/components/hero.tsx` and `src/components/site-header.tsx`
+  read the active variant from the theme context and render accordingly.
+
+> Once a final look is chosen, we bake those values in as the defaults (and can remove or
+> hide the Style Studio for launch). The switcher currently appears on the public site
+> only.
 
 ---
 
@@ -93,14 +135,21 @@ into any of the above.
 ```
 src/
   app/
-    (site)/            # public site (shared header/footer layout)
+    (site)/            # public site (shared header/footer layout + Style Studio)
     admin/             # studio CMS (own shell + passcode gate)
-    layout.tsx         # root: fonts + ContentProvider
-    globals.css
-  components/          # SmartImage, Reveal, header/footer, cards, admin UI
+    layout.tsx         # root: fonts + ThemeProvider + ContentProvider
+    globals.css        # design tokens, palettes, light/dark, base styles
+  components/
+    hero.tsx           # hero layout variants
+    site-header.tsx    # header layout variants
+    style-switcher.tsx # the Style Studio panel
+    smart-image.tsx    # resolves idb:// / data / remote image sources
+    ...                # Reveal, footer, cards, admin UI
   context/
+    theme-context.tsx  # style/theme state + persistence
     content-context.tsx  # single source of truth + CRUD
   lib/
+    theme.ts           # style-switcher option definitions
     types.ts           # content model
     seed.ts            # default content
     store.ts           # localStorage persistence
@@ -111,5 +160,6 @@ public/seed/           # on-brand SVG placeholder imagery
 
 ## Deploying to Vercel
 
-Import the repo in Vercel (framework auto-detected as Next.js). Set
-`NEXT_PUBLIC_ADMIN_PASSCODE` in Project → Settings → Environment Variables. Done.
+Import the repo in Vercel (framework auto-detected as Next.js via `vercel.json`). Set
+`NEXT_PUBLIC_ADMIN_PASSCODE` in Project → Settings → Environment Variables. Every push to
+`main` triggers a deploy.
