@@ -2,9 +2,163 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===========================================================================
+   THEME TOKENS
+   All colors are space-separated RGB channels so Tailwind can apply alpha.
+   :root = default "Evergreen & Oat" palette (light).
+   [data-theme] blocks swap the palette; [data-mode="dark"] remaps the
+   mode-aware neutrals only (brand hues stay from the active theme).
+   =========================================================================== */
 :root {
-  --font-display: "Fraunces", Georgia, serif;
-  --font-body: "Nunito Sans", system-ui, sans-serif;
+  /* mode-aware neutrals */
+  --c-canvas: 244 239 228;
+  --c-paper: 250 247 240;
+  --c-cream: 244 239 228;
+  --c-linen: 237 230 214;
+  --c-oat: 203 191 154;
+  --c-sand: 184 169 129;
+  --c-ink: 42 45 42;
+  --c-moss: 109 106 85;
+  --c-heading: 31 59 44;
+  /* brand greens */
+  --c-sage: 151 169 124;
+  --c-fern: 81 89 50;
+  --c-forest: 51 81 61;
+  --c-evergreen: 31 59 44;
+  --c-pine: 20 37 28;
+  /* warm accents */
+  --c-oatgold: 242 196 141;
+  --c-rustwood: 128 58 24;
+  --c-cedar: 89 56 37;
+  --c-wine: 110 59 62;
+  --c-midnight: 13 13 13;
+
+  /* shape + type */
+  --radius-md: 1.25rem;
+  --radius-lg: 1.75rem;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-body: var(--font-nunito), system-ui, sans-serif;
+}
+
+/* --- Palette: Sage & Cream (soft, airy) ---------------------------------- */
+[data-theme="sage"] {
+  --c-canvas: 245 242 233;
+  --c-paper: 252 250 244;
+  --c-cream: 245 242 233;
+  --c-linen: 236 232 219;
+  --c-oat: 199 199 170;
+  --c-sand: 170 178 140;
+  --c-ink: 58 61 52;
+  --c-moss: 120 130 100;
+  --c-heading: 74 92 58;
+  --c-sage: 151 169 124;
+  --c-fern: 106 122 78;
+  --c-forest: 90 110 70;
+  --c-evergreen: 74 92 58;
+  --c-pine: 52 66 42;
+  --c-oatgold: 222 205 150;
+  --c-rustwood: 150 116 70;
+  --c-cedar: 110 96 66;
+  --c-wine: 130 110 80;
+}
+
+/* --- Palette: Rustwood Autumn (warm, earthy) ----------------------------- */
+[data-theme="rustwood"] {
+  --c-canvas: 245 238 226;
+  --c-paper: 251 246 236;
+  --c-cream: 245 238 226;
+  --c-linen: 238 228 210;
+  --c-oat: 210 180 130;
+  --c-sand: 190 150 100;
+  --c-ink: 40 34 28;
+  --c-moss: 120 96 66;
+  --c-heading: 74 46 30;
+  --c-sage: 130 140 90;
+  --c-fern: 81 89 50;
+  --c-forest: 90 100 55;
+  --c-evergreen: 81 89 50;
+  --c-pine: 26 28 20;
+  --c-oatgold: 242 196 141;
+  --c-rustwood: 128 58 24;
+  --c-cedar: 89 56 37;
+  --c-wine: 128 58 24;
+}
+
+/* --- Palette: Forest & Wine (moody, rich) -------------------------------- */
+[data-theme="wine"] {
+  --c-canvas: 240 236 228;
+  --c-paper: 247 244 237;
+  --c-cream: 240 236 228;
+  --c-linen: 230 224 214;
+  --c-oat: 176 148 116;
+  --c-sand: 150 120 92;
+  --c-ink: 44 40 38;
+  --c-moss: 110 96 86;
+  --c-heading: 61 78 58;
+  --c-sage: 130 145 110;
+  --c-fern: 70 88 62;
+  --c-forest: 69 86 63;
+  --c-evergreen: 61 78 58;
+  --c-pine: 40 52 40;
+  --c-oatgold: 200 160 120;
+  --c-rustwood: 122 58 62;
+  --c-cedar: 96 74 60;
+  --c-wine: 116 60 63;
+}
+
+/* --- Palette: Moonlit Grove (cool, mystical) ----------------------------- */
+[data-theme="moonlit"] {
+  --c-canvas: 236 240 238;
+  --c-paper: 245 248 246;
+  --c-cream: 236 240 238;
+  --c-linen: 224 231 229;
+  --c-oat: 168 190 186;
+  --c-sand: 130 160 155;
+  --c-ink: 30 42 42;
+  --c-moss: 90 116 112;
+  --c-heading: 24 64 60;
+  --c-sage: 130 170 160;
+  --c-fern: 46 92 84;
+  --c-forest: 34 78 72;
+  --c-evergreen: 24 64 60;
+  --c-pine: 14 38 36;
+  --c-oatgold: 178 206 182;
+  --c-rustwood: 90 120 130;
+  --c-cedar: 70 96 100;
+  --c-wine: 96 116 130;
+}
+
+/* --- Dark mode: remap neutrals only (keeps active theme's brand hues) ----- */
+[data-mode="dark"] {
+  --c-canvas: 22 25 20;
+  --c-paper: 30 34 27;
+  --c-linen: 38 43 34;
+  --c-oat: 58 62 51;
+  --c-sand: 92 86 68;
+  --c-ink: 235 230 217;
+  --c-moss: 168 165 143;
+  --c-heading: 226 219 200;
+  /* cream stays light (used for chips/monograms on dark chrome) */
+}
+
+/* --- Radius presets ------------------------------------------------------- */
+[data-radius="sharp"] {
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+}
+[data-radius="round"] {
+  --radius-md: 1.75rem;
+  --radius-lg: 2.5rem;
+}
+
+/* --- Font presets --------------------------------------------------------- */
+[data-font="classic"] {
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-body: var(--font-worksans), system-ui, sans-serif;
+}
+[data-font="modern"] {
+  --font-display: var(--font-dmserif), Georgia, serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
 }
 
 @layer base {
@@ -12,14 +166,15 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-cream text-ink font-body antialiased;
+    @apply bg-canvas text-ink font-body antialiased;
     background-image:
-      radial-gradient(circle at 15% -10%, rgba(151, 169, 124, 0.14), transparent 45%),
-      radial-gradient(circle at 90% 0%, rgba(242, 196, 141, 0.12), transparent 40%);
+      radial-gradient(circle at 15% -10%, rgb(var(--c-sage) / 0.14), transparent 45%),
+      radial-gradient(circle at 90% 0%, rgb(var(--c-oatgold) / 0.12), transparent 40%);
     background-attachment: fixed;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   h1, h2, h3, h4 {
-    @apply font-display text-evergreen;
+    @apply font-display text-heading;
     text-wrap: balance;
   }
   ::selection {
@@ -35,34 +190,30 @@
     @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
   }
 
-  /* Eyebrow / kicker label */
   .kicker {
     @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-moss;
   }
 
-  /* Buttons */
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold
            transition-all duration-200 focus-visible:outline-none focus-visible:ring-2
-           focus-visible:ring-forest/50 focus-visible:ring-offset-2 focus-visible:ring-offset-cream
+           focus-visible:ring-forest/50 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas
            disabled:cursor-not-allowed disabled:opacity-60;
   }
   .btn-primary {
     @apply btn bg-evergreen text-cream hover:bg-forest hover:shadow-lift;
   }
   .btn-secondary {
-    @apply btn border border-forest/30 bg-transparent text-evergreen hover:bg-forest/10;
+    @apply btn border border-forest/30 bg-transparent text-heading hover:bg-forest/10;
   }
   .btn-gold {
     @apply btn bg-oatgold text-cedar hover:brightness-105 hover:shadow-lift;
   }
 
-  /* Cards */
   .card {
     @apply rounded-xl2 border border-oat/40 bg-paper/80 shadow-soft backdrop-blur-sm;
   }
 
-  /* Form controls */
   .field {
     @apply w-full rounded-xl2 border border-oat/60 bg-paper px-4 py-3 text-ink
            placeholder:text-moss/60 shadow-sm transition
@@ -72,7 +223,6 @@
     @apply mb-1.5 block text-sm font-semibold text-ink;
   }
 
-  /* Decorative thread divider */
   .thread-divider {
     @apply h-px w-full bg-gradient-to-r from-transparent via-oat to-transparent;
   }

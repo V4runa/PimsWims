@@ -72,7 +72,7 @@ export default function ShopClient() {
                 "rounded-full border px-4 py-2 text-sm font-semibold transition-colors",
                 category === c.slug
                   ? "border-evergreen bg-evergreen text-cream"
-                  : "border-oat/60 bg-paper text-ink/70 hover:border-forest hover:text-evergreen"
+                  : "border-oat/60 bg-paper text-ink/70 hover:border-forest hover:text-heading"
               )}
             >
               {c.name}

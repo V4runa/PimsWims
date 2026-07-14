@@ -58,7 +58,7 @@ export default function BlogPage() {
                 </div>
                 <div className="flex flex-1 flex-col gap-2 p-5">
                   <span className="text-xs uppercase tracking-widest text-moss">{formatDate(post.publishedAt)}</span>
-                  <h3 className="font-display text-xl text-evergreen">{post.title}</h3>
+                  <h3 className="font-display text-xl text-heading">{post.title}</h3>
                   <p className="line-clamp-3 text-sm text-moss">{post.excerpt}</p>
                 </div>
               </Link>

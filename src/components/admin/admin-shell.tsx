@@ -71,7 +71,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
   if (!authed) {
     return (
       <div className="grid min-h-screen place-items-center bg-pine px-5">
-        <form onSubmit={login} className="w-full max-w-sm rounded-xl3 bg-cream p-8 shadow-lift">
+        <form onSubmit={login} className="w-full max-w-sm rounded-xl3 bg-canvas p-8 shadow-lift">
           <div className="mb-6 flex flex-col items-center text-center">
             <span className="grid h-14 w-14 place-items-center rounded-full bg-evergreen text-cream">
               <Lock className="h-6 w-6" />
@@ -89,7 +89,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
           />
           {error && <p className="mt-2 text-center text-sm text-rustwood">That passcode didn&apos;t match.</p>}
           <button type="submit" className="btn-primary mt-4 w-full">Enter studio</button>
-          <Link href="/" className="mt-4 block text-center text-sm text-moss hover:text-evergreen">
+          <Link href="/" className="mt-4 block text-center text-sm text-moss hover:text-heading">
             ← Back to site
           </Link>
         </form>
@@ -101,7 +101,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
     <div className="flex min-h-screen bg-linen">
       <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col border-r border-oat/50 bg-pine p-4 text-cream/80 lg:flex">
         <Link href="/admin" className="mb-6 flex items-center gap-2 px-2">
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-cream text-evergreen font-display text-lg">P</span>
+          <span className="grid h-9 w-9 place-items-center rounded-full bg-cream text-pine font-display text-lg">P</span>
           <span className="font-display text-lg text-cream">Studio CMS</span>
         </Link>
         <nav className="flex-1 space-y-1">
@@ -146,7 +146,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
                 href={item.href}
                 className={cn(
                   "flex shrink-0 items-center gap-2 rounded-full px-3 py-2 text-xs font-semibold",
-                  active ? "bg-cream text-evergreen" : "text-cream/80"
+                  active ? "bg-cream text-pine" : "text-cream/80"
                 )}
               >
                 <item.icon className="h-4 w-4" /> {item.label}

@@ -19,7 +19,7 @@ export default function BlogPostPage() {
   return (
     <article className="py-10">
       <div className="container-page max-w-3xl">
-        <Link href="/blog" className="inline-flex items-center gap-1 text-sm font-semibold text-moss hover:text-evergreen">
+        <Link href="/blog" className="inline-flex items-center gap-1 text-sm font-semibold text-moss hover:text-heading">
           <ArrowLeft className="h-4 w-4" /> Back to journal
         </Link>
         <div className="mt-6 flex flex-wrap items-center gap-3 text-xs uppercase tracking-widest text-moss">

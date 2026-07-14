@@ -41,7 +41,7 @@ export default function AdminTestimonials() {
                 <StarRating value={t.rating ?? 5} />
                 {t.featured && <Star className="h-4 w-4 fill-oatgold text-oatgold" />}
               </div>
-              <p className="mt-3 flex-1 font-display italic text-evergreen">“{t.quote}”</p>
+              <p className="mt-3 flex-1 font-display italic text-heading">“{t.quote}”</p>
               <div className="mt-4 flex items-center justify-between">
                 <div>
                   <p className="text-sm font-semibold text-ink">{t.author}</p>

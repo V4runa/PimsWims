@@ -1,22 +1,62 @@
 import type { Metadata } from "next";
-import { Fraunces, Nunito_Sans } from "next/font/google";
+import {
+  Fraunces,
+  Nunito_Sans,
+  Cormorant_Garamond,
+  Work_Sans,
+  DM_Serif_Display,
+  Inter,
+} from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/context/theme-context";
 import { ContentProvider } from "@/context/content-context";
 
-const display = Fraunces({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-fraunces",
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
   display: "swap",
 });
-
-const body = Nunito_Sans({
+const nunito = Nunito_Sans({
   subsets: ["latin"],
-  variable: "--font-body",
+  variable: "--font-nunito",
   weight: ["400", "600", "700", "800"],
   display: "swap",
 });
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-cormorant",
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+const workSans = Work_Sans({
+  subsets: ["latin"],
+  variable: "--font-worksans",
+  display: "swap",
+});
+const dmSerif = DM_Serif_Display({
+  subsets: ["latin"],
+  variable: "--font-dmserif",
+  weight: ["400"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const fontVars = [
+  fraunces.variable,
+  nunito.variable,
+  cormorant.variable,
+  workSans.variable,
+  dmSerif.variable,
+  inter.variable,
+].join(" ");
 
 export const metadata: Metadata = {
   title: {
@@ -34,11 +74,18 @@ export const metadata: Metadata = {
   },
 };
 
+const themeInitScript = `(function(){try{var d=document.documentElement;var s=JSON.parse(localStorage.getItem('pims-wims:style')||'{}');d.dataset.theme=s.palette||'evergreen';d.dataset.mode=s.mode||'light';d.dataset.font=s.font||'storybook';d.dataset.radius=s.radius||'soft';d.style.colorScheme=s.mode||'light';}catch(e){}})();`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable}`}>
+    <html lang="en" className={fontVars} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body>
-        <ContentProvider>{children}</ContentProvider>
+        <ThemeProvider>
+          <ContentProvider>{children}</ContentProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

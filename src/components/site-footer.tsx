@@ -14,7 +14,7 @@ export default function SiteFooter() {
       <div className="container-wide grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-1">
           <div className="flex items-center gap-2">
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-cream text-evergreen font-display text-lg">
+            <span className="grid h-9 w-9 place-items-center rounded-full bg-cream text-pine font-display text-lg">
               P
             </span>
             <span className="font-display text-xl text-cream">{settings.brandName}</span>

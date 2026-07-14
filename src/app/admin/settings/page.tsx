@@ -150,7 +150,7 @@ export default function AdminSettings() {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="rounded-xl3 border border-oat/50 bg-paper/70 p-6">
-      <h2 className="mb-4 font-display text-xl text-evergreen">{title}</h2>
+      <h2 className="mb-4 font-display text-xl text-heading">{title}</h2>
       <div className="space-y-4">{children}</div>
     </section>
   );

@@ -38,7 +38,7 @@ export default function ProductDetailPage() {
 
   return (
     <div className="container-wide py-10">
-      <Link href="/shop" className="inline-flex items-center gap-1 text-sm font-semibold text-moss hover:text-evergreen">
+      <Link href="/shop" className="inline-flex items-center gap-1 text-sm font-semibold text-moss hover:text-heading">
         <ArrowLeft className="h-4 w-4" /> Back to shop
       </Link>
 
@@ -126,7 +126,7 @@ export default function ProductDetailPage() {
             {reviews.map((t) => (
               <div key={t.id} className="card p-6">
                 <StarRating value={t.rating ?? 5} />
-                <p className="mt-3 font-display text-lg italic text-evergreen">“{t.quote}”</p>
+                <p className="mt-3 font-display text-lg italic text-heading">“{t.quote}”</p>
                 <p className="mt-3 text-sm font-semibold text-ink">{t.author}</p>
               </div>
             ))}

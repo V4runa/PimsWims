@@ -46,7 +46,7 @@ export default function AboutPage() {
           <div className="mt-10 space-y-3">
             {faqs.map((f, i) => (
               <details key={i} className="group rounded-xl2 border border-oat/50 bg-paper/70 p-5 open:shadow-soft">
-                <summary className="flex cursor-pointer list-none items-center justify-between font-display text-lg text-evergreen">
+                <summary className="flex cursor-pointer list-none items-center justify-between font-display text-lg text-heading">
                   {f.question}
                   <span className="ml-4 text-2xl text-moss transition-transform group-open:rotate-45">+</span>
                 </summary>

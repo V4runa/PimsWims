@@ -21,7 +21,7 @@ export default function ProductCard({ product }: { product: Product }) {
         </div>
       </div>
       <div className="flex flex-1 flex-col gap-1 p-4">
-        <h3 className="font-display text-lg text-evergreen">{product.name}</h3>
+        <h3 className="font-display text-lg text-heading">{product.name}</h3>
         {product.tagline && (
           <p className="line-clamp-2 text-sm text-moss">{product.tagline}</p>
         )}

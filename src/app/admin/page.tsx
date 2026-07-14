@@ -58,7 +58,7 @@ export default function AdminDashboard() {
               <s.icon className="h-6 w-6 text-forest" />
               <ArrowRight className="h-4 w-4 text-moss opacity-0 transition group-hover:opacity-100" />
             </div>
-            <p className="mt-4 font-display text-3xl text-evergreen">{s.value}</p>
+            <p className="mt-4 font-display text-3xl text-heading">{s.value}</p>
             <p className="text-sm text-moss">{s.label}</p>
           </Link>
         ))}
@@ -66,8 +66,8 @@ export default function AdminDashboard() {
 
       <div className="mt-8 rounded-xl3 border border-oat/50 bg-paper p-6">
         <div className="flex items-center justify-between">
-          <h2 className="font-display text-xl text-evergreen">Recent activity</h2>
-          <Link href="/admin/messages" className="text-sm font-semibold text-forest hover:text-evergreen">View inbox</Link>
+          <h2 className="font-display text-xl text-heading">Recent activity</h2>
+          <Link href="/admin/messages" className="text-sm font-semibold text-forest hover:text-heading">View inbox</Link>
         </div>
         {recent.length === 0 ? (
           <p className="mt-6 text-sm text-moss">No submissions yet. When customers reach out, they&apos;ll appear here.</p>

@@ -50,7 +50,7 @@ export default function AdminBlog() {
               <span className="h-16 w-24 shrink-0 overflow-hidden rounded-lg"><SmartImage image={p.coverImage} className="h-full w-full" /></span>
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2">
-                  <p className="truncate font-display text-lg text-evergreen">{p.title}</p>
+                  <p className="truncate font-display text-lg text-heading">{p.title}</p>
                   <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${p.published ? "bg-fern/15 text-fern" : "bg-ink/10 text-ink/60"}`}>
                     {p.published ? "Published" : "Draft"}
                   </span>

@@ -6,6 +6,7 @@ import { useContent } from "@/context/content-context";
 import SmartImage from "@/components/smart-image";
 import ProductCard from "@/components/product-card";
 import Reveal from "@/components/reveal";
+import Hero from "@/components/hero";
 import { SectionHeading, StarRating, Kicker } from "@/components/ui";
 
 const VALUES = [
@@ -17,7 +18,6 @@ const VALUES = [
 
 export default function HomePage() {
   const { content } = useContent();
-  const { settings } = content;
   const featured = content.products.filter((p) => p.featured).slice(0, 3);
   const galleryPreview = [...content.gallery].sort((a, b) => (a.order ?? 0) - (b.order ?? 0)).slice(0, 6);
   const featuredTestimonials = content.testimonials.filter((t) => t.featured).slice(0, 3);
@@ -25,30 +25,7 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <SmartImage image={settings.heroImage} className="h-full w-full" imgClassName="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-t from-pine/85 via-pine/45 to-pine/25" />
-        </div>
-        <div className="container-wide flex min-h-[82vh] flex-col justify-end pb-16 pt-28 sm:pb-24">
-          <div className="max-w-2xl animate-fade-up">
-            <Kicker className="mb-4 text-oatgold">{settings.tagline}</Kicker>
-            <h1 className="text-4xl leading-[1.05] text-cream sm:text-6xl">
-              {settings.heroHeadline}
-            </h1>
-            <p className="mt-5 max-w-xl text-lg text-cream/85">{settings.heroSubcopy}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/shop" className="btn-gold">
-                Explore the shop <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link href="/custom" className="btn-secondary border-cream/40 text-cream hover:bg-cream/10">
-                Commission a piece
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       {/* Values */}
       <section className="container-wide -mt-10 relative z-10">
@@ -59,7 +36,7 @@ export default function HomePage() {
                 <v.icon className="h-5 w-5" />
               </span>
               <div>
-                <p className="font-display text-lg text-evergreen">{v.title}</p>
+                <p className="font-display text-lg text-heading">{v.title}</p>
                 <p className="text-sm text-moss">{v.text}</p>
               </div>
             </Reveal>
@@ -153,7 +130,7 @@ export default function HomePage() {
             {featuredTestimonials.map((t, i) => (
               <Reveal key={t.id} delay={i * 80} className="card flex flex-col p-6">
                 <StarRating value={t.rating ?? 5} />
-                <p className="mt-4 flex-1 font-display text-lg italic text-evergreen">“{t.quote}”</p>
+                <p className="mt-4 flex-1 font-display text-lg italic text-heading">“{t.quote}”</p>
                 <p className="mt-4 text-sm font-semibold text-ink">
                   {t.author}
                   {t.location && <span className="font-normal text-moss"> · {t.location}</span>}
@@ -180,7 +157,7 @@ export default function HomePage() {
                     <SmartImage image={post.coverImage} className="h-full w-full" imgClassName="group-hover:scale-105 transition-transform duration-500" />
                   </div>
                   <div className="flex flex-col justify-center gap-2 p-6">
-                    <h3 className="font-display text-xl text-evergreen">{post.title}</h3>
+                    <h3 className="font-display text-xl text-heading">{post.title}</h3>
                     <p className="line-clamp-3 text-sm text-moss">{post.excerpt}</p>
                     <span className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-forest">
                       Read more <ArrowRight className="h-4 w-4" />

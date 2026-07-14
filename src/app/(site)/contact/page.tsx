@@ -29,7 +29,7 @@ export default function ContactPage() {
           </p>
 
           <div className="mt-8 space-y-4">
-            <a href={`mailto:${contact.email}`} className="flex items-center gap-3 text-ink hover:text-evergreen">
+            <a href={`mailto:${contact.email}`} className="flex items-center gap-3 text-ink hover:text-heading">
               <span className="grid h-11 w-11 place-items-center rounded-full bg-forest/10 text-forest">
                 <Mail className="h-5 w-5" />
               </span>
@@ -44,7 +44,7 @@ export default function ContactPage() {
               </div>
             )}
             {contact.instagram && (
-              <a href={contact.instagram} target="_blank" rel="noreferrer" className="flex items-center gap-3 text-ink hover:text-evergreen">
+              <a href={contact.instagram} target="_blank" rel="noreferrer" className="flex items-center gap-3 text-ink hover:text-heading">
                 <span className="grid h-11 w-11 place-items-center rounded-full bg-forest/10 text-forest">
                   <Instagram className="h-5 w-5" />
                 </span>

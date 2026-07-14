@@ -81,10 +81,10 @@ export default function GalleryPage() {
           <div className="max-h-[85vh] max-w-3xl overflow-hidden rounded-xl3" onClick={(e) => e.stopPropagation()}>
             <SmartImage image={lightbox.image} className="max-h-[70vh] w-full" imgClassName="object-contain" />
             {(lightbox.title || lightbox.productSlug) && (
-              <div className="flex items-center justify-between gap-4 bg-cream p-4">
-                <p className="font-display text-lg text-evergreen">{lightbox.title}</p>
+              <div className="flex items-center justify-between gap-4 bg-canvas p-4">
+                <p className="font-display text-lg text-heading">{lightbox.title}</p>
                 {lightbox.productSlug && (
-                  <Link href={`/shop/${lightbox.productSlug}`} className="inline-flex items-center gap-1 text-sm font-semibold text-forest hover:text-evergreen">
+                  <Link href={`/shop/${lightbox.productSlug}`} className="inline-flex items-center gap-1 text-sm font-semibold text-forest hover:text-heading">
                     View piece <ArrowRight className="h-4 w-4" />
                   </Link>
                 )}

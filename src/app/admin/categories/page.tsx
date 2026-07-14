@@ -46,7 +46,7 @@ export default function AdminCategories() {
               <div className="p-4">
                 <div className="flex items-start justify-between">
                   <div>
-                    <p className="font-display text-lg text-evergreen">{c.name}</p>
+                    <p className="font-display text-lg text-heading">{c.name}</p>
                     <p className="text-xs text-moss">/{c.slug} · {content.products.filter((p) => p.category === c.slug).length} pieces</p>
                   </div>
                   <div className="flex gap-1">

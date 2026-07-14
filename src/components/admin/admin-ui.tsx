@@ -16,7 +16,7 @@ export function AdminHeader({
   return (
     <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
       <div>
-        <h1 className="text-3xl text-evergreen">{title}</h1>
+        <h1 className="text-3xl text-heading">{title}</h1>
         {description && <p className="mt-1 text-moss">{description}</p>}
       </div>
       {action}
@@ -52,11 +52,11 @@ export function Modal({
   return (
     <div className="fixed inset-0 z-[70] flex items-start justify-center overflow-y-auto bg-pine/60 p-4 backdrop-blur-sm sm:p-8" onClick={onClose}>
       <div
-        className={cn("w-full rounded-xl3 bg-cream shadow-lift", wide ? "max-w-3xl" : "max-w-xl")}
+        className={cn("w-full rounded-xl3 bg-canvas shadow-lift", wide ? "max-w-3xl" : "max-w-xl")}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between border-b border-oat/50 px-6 py-4">
-          <h2 className="font-display text-xl text-evergreen">{title}</h2>
+          <h2 className="font-display text-xl text-heading">{title}</h2>
           <button onClick={onClose} className="grid h-9 w-9 place-items-center rounded-full text-moss hover:bg-oat/30" aria-label="Close">
             <X className="h-5 w-5" />
           </button>
@@ -70,7 +70,7 @@ export function Modal({
 export function EmptyState({ title, hint }: { title: string; hint?: string }) {
   return (
     <div className="rounded-xl3 border-2 border-dashed border-oat/60 bg-paper/60 py-16 text-center">
-      <p className="font-display text-lg text-evergreen">{title}</p>
+      <p className="font-display text-lg text-heading">{title}</p>
       {hint && <p className="mt-1 text-sm text-moss">{hint}</p>}
     </div>
   );

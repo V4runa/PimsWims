@@ -90,7 +90,7 @@ export default function AdminMessages() {
             <div>
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <h2 className="text-2xl text-evergreen">{activeQuote.projectType}</h2>
+                  <h2 className="text-2xl text-heading">{activeQuote.projectType}</h2>
                   <p className="text-moss">from {activeQuote.name} · {formatDate(activeQuote.createdAt)}</p>
                 </div>
                 <SubmissionActions kind="quote" id={activeQuote.id} status={activeQuote.status}
@@ -128,7 +128,7 @@ export default function AdminMessages() {
             <div>
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <h2 className="text-2xl text-evergreen">{activeMsg.subject || "Message"}</h2>
+                  <h2 className="text-2xl text-heading">{activeMsg.subject || "Message"}</h2>
                   <p className="text-moss">from {activeMsg.name} · {formatDate(activeMsg.createdAt)}</p>
                 </div>
                 <SubmissionActions kind="contact" id={activeMsg.id} status={activeMsg.status}

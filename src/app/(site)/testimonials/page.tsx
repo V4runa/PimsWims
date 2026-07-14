@@ -30,7 +30,7 @@ export default function TestimonialsPage() {
             <Reveal key={t.id} delay={(i % 3) * 70} className="break-inside-avoid">
               <figure className="card p-6">
                 <StarRating value={t.rating ?? 5} />
-                <blockquote className="mt-4 font-display text-lg italic text-evergreen">
+                <blockquote className="mt-4 font-display text-lg italic text-heading">
                   “{t.quote}”
                 </blockquote>
                 <figcaption className="mt-5 flex items-center gap-3">
