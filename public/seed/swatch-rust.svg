@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1250" viewBox="0 0 1000 1250">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F2C48D"/>
+      <stop offset="0.55" stop-color="#803A18"/>
+      <stop offset="1" stop-color="#593825"/>
+    </linearGradient>
+    <pattern id="knit" width="60" height="80" patternUnits="userSpaceOnUse">
+      <path d="M0 40 Q15 0 30 40 T60 40" fill="none" stroke="#ffffff" stroke-opacity="0.12" stroke-width="7"/>
+      <path d="M0 80 Q15 40 30 80 T60 80" fill="none" stroke="#000000" stroke-opacity="0.08" stroke-width="7"/>
+    </pattern>
+  </defs>
+  <rect width="1000" height="1250" fill="url(#g)"/>
+  <rect width="1000" height="1250" fill="url(#knit)"/>
+  <text x="50" y="1190" font-family="Georgia, serif" font-size="42" fill="#F4EFE4" fill-opacity="0.85">Pim's Wims</text>
+</svg>

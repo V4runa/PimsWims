@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Nunito Sans", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-cream text-ink font-body antialiased;
+    background-image:
+      radial-gradient(circle at 15% -10%, rgba(151, 169, 124, 0.14), transparent 45%),
+      radial-gradient(circle at 90% 0%, rgba(242, 196, 141, 0.12), transparent 40%);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-evergreen;
+    text-wrap: balance;
+  }
+  ::selection {
+    @apply bg-sage/40 text-pine;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+  .container-wide {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+
+  /* Eyebrow / kicker label */
+  .kicker {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-moss;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold
+           transition-all duration-200 focus-visible:outline-none focus-visible:ring-2
+           focus-visible:ring-forest/50 focus-visible:ring-offset-2 focus-visible:ring-offset-cream
+           disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-primary {
+    @apply btn bg-evergreen text-cream hover:bg-forest hover:shadow-lift;
+  }
+  .btn-secondary {
+    @apply btn border border-forest/30 bg-transparent text-evergreen hover:bg-forest/10;
+  }
+  .btn-gold {
+    @apply btn bg-oatgold text-cedar hover:brightness-105 hover:shadow-lift;
+  }
+
+  /* Cards */
+  .card {
+    @apply rounded-xl2 border border-oat/40 bg-paper/80 shadow-soft backdrop-blur-sm;
+  }
+
+  /* Form controls */
+  .field {
+    @apply w-full rounded-xl2 border border-oat/60 bg-paper px-4 py-3 text-ink
+           placeholder:text-moss/60 shadow-sm transition
+           focus:border-forest focus:outline-none focus:ring-2 focus:ring-forest/30;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-semibold text-ink;
+  }
+
+  /* Decorative thread divider */
+  .thread-divider {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-oat to-transparent;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
